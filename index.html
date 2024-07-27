@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroller</title>
+    <!-- React JS CDN -->
+    <script src="https://unpkg.com/react/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone/babel.min.js"></script>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="h-screen m-0">
+    <div id="root" class="flex items-center justify-center h-full">
+        <!-- React will render here -->
+    </div>
+    <script type="text/babel">
+        const { useState } = React;
+
+        const App = () => {
+            const avatars = [
+                "https://cdn.pixabay.com/photo/2022/06/29/10/58/fox-7291456_1280.jpg",
+                "https://img.freepik.com/free-vector/cute-astronaut-girl-traveling-hiking-with-backpack-cartoon-vector-icon-illustration-science-isolated_138676-10075.jpg?size=626&ext=jpg",
+                "https://cdn.pixabay.com/photo/2023/10/17/03/23/child-8320341_640.png",     
+                "https://cdn.pixabay.com/photo/2023/01/27/04/53/muslim-7747745_640.png",
+                "https://cdn.pixabay.com/photo/2022/08/31/07/16/cartoon-7422577_640.png",
+                "https://img.freepik.com/free-vector/cute-unicorn-bite-love-cartoon-vector-icon-illustration-animal-nature-icon-concept-isolated-premium-vector-flat-cartoon-style_138676-4091.jpg?w=740&t=st=1722070196~exp=1722070796~hmac=7ce135843d908f059f542ef336d4f933cd87c859b69384f9aa194c35b653db60",            
+                "https://img.freepik.com/free-vector/cute-panda-with-bamboo_138676-3053.jpg?w=740&t=st=1722070136~exp=1722070736~hmac=522f0291b0467597de1df93434fd4a7552bb653a1bdc6424d9595746ff58b405",
+               
+            ];
+
+            const images = [
+                "https://img.freepik.com/free-vector/cute-cat-standing-cartoon-vector-icon-illustration-animal-nature-icon-isolated-flat-vector_138676-11953.jpg?size=626&ext=jpg",
+                "https://img.freepik.com/free-vector/cute-cool-boy-dabbing-pose-cartoon-vector-icon-illustration-people-fashion-icon-concept-isolated_138676-5680.jpg?size=626&ext=jpg",
+                "https://img.freepik.com/free-vector/hand-drawn-walking-cartoon-illustration_23-2150818655.jpg?size=626&ext=jpg",
+                "https://img.freepik.com/free-vector/cute-rich-boy-throws-money-cartoon-vector-icon-illustration-people-business-icon-concept-isolated-premium-vector-flat-cartoon-style_138676-3950.jpg?w=740&t=st=1722069829~exp=1722070429~hmac=0a8061b3f5698bfb3974a9513d1cc9914ef81c853c6c31ba76c81578322c3903"
+            ];
+
+            return (
+                <div className="flex flex-col items-center justify-center w-1/5 h-full p-4">
+                    {/*  Scroll for Avatars */}
+                    <div className="flex overflow-x-auto no-scrollbar p-2 mb-4 space-x-2">
+                        {avatars.map((src, index) => (
+                            <img key={index} src={src} alt={`avatar-${index}`} className="rounded-full w-12 h-12" />
+                        ))}
+                    </div>
+                    
+                    {/* Scroll for Images */}
+                    <div className="flex-1 overflow-y-auto no-scrollbar p-2">
+                        {images.map((src, index) => (
+                            <img key={index} src={src} alt={`image-${index}`} className="my-2" />
+                        ))}
+                    </div>
+                </div>
+            );
+        };
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+    <style>
+        
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;  
+            scrollbar-width: none;  
+        }
+    </style>
+</body>
+</html>
